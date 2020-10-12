@@ -5,6 +5,7 @@ import com.niit.housing.entity.User;
 import com.niit.housing.repos.UserRepository;
 import com.niit.housing.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class UserServiceImpl implements UserService {
     private final ConversionService conversionService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, ConversionService conversionService) {
+    public UserServiceImpl(UserRepository userRepository, @Qualifier("mvcConversionService") ConversionService conversionService) {
         this.userRepository = userRepository;
         this.conversionService = conversionService;
     }
@@ -45,7 +46,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUser(Long userId) {
-        return null;
+        User user = userRepository.findById(userId).get();
+        return conversionService.convert(user, UserDto.class);
     }
 
     @Override
