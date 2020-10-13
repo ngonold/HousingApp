@@ -22,7 +22,7 @@ public class UserController {
         return userService.getAllUsers();
     }
     //just a test how it works
-    @GetMapping(path = {"hello"})
+    @GetMapping(path = {"hello", "yay"})
     public String helloWorld() {
         return "HelloWorld!";
     }
