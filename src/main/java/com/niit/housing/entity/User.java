@@ -20,4 +20,7 @@ public class User extends EntityBase {
 
     @Column (name = "phone_number")
     private String phoneNumber;
+
+    @Column (name = "email")
+    private String email;
 }

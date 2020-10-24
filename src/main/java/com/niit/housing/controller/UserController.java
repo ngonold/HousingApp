@@ -2,8 +2,13 @@ package com.niit.housing.controller;
 
 import com.niit.housing.dto.UserDto;
 import com.niit.housing.services.interfaces.UserService;
+import net.bytebuddy.implementation.Implementation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +29,7 @@ public class UserController {
     //just a test how it works
     @GetMapping(path = {"hello", "yay"})
     public String helloWorld() {
-        return "HelloWorld!";
+        return "Hello!";
     }
     @GetMapping(path = "id/{id}")
     public UserDto getUserById(@PathVariable("id") Long id) {
@@ -32,7 +37,7 @@ public class UserController {
         return userService.getUser(id);
     }
     @PostMapping
-    public UserDto createUser(@RequestBody UserDto userDto) {
+    public UserDto createUser(@Valid @RequestBody UserDto userDto) {
         return userService.createUser(userDto);
     }
     @PutMapping
@@ -42,5 +47,10 @@ public class UserController {
     @DeleteMapping
     public void deleteUser (@RequestParam("id") Long id) {
          userService.deleteUser(id);
+    }
+
+    @ExceptionHandler(HttpClientErrorException.NotFound.class)
+    public String onException() {
+        return "Oops!";
     }
 }
