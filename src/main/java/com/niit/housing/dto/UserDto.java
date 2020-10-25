@@ -20,7 +20,7 @@ public class UserDto {
     private String lastName;
     @NotNull(message = "blank phone number")
     private String phoneNumber;
-    @NotNull
+//    @NotNull
     @Email     //@Pattern(regexp = )
     private String email;
 }

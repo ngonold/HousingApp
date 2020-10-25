@@ -13,7 +13,7 @@ public class UserDtoToUserConverter implements Converter<UserDto, User> {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setPhoneNumber(userDto.getPhoneNumber());
-        user.setEmail(user.getEmail());
+        user.setEmail(userDto.getEmail());
         return user;
         //return new User(userDto.getFirstName(), userDto.getLastName(), userDto.getPhoneNumber());
     }

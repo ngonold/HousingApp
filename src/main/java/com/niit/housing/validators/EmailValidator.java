@@ -10,7 +10,7 @@ public class EmailValidator implements ConstraintValidator<Email, String> {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {
-        Matcher emailMather = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
-        return emailMather.find();
+        Matcher emailMatcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return emailMatcher.find();
     }
 }

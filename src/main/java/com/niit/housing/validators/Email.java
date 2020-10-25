@@ -1,6 +1,7 @@
 package com.niit.housing.validators;
 
 import javax.validation.Constraint;
+import javax.validation.Payload;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,4 +13,7 @@ import java.lang.annotation.Target;
 public @interface Email  {
     String message()default "no email";
 
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }
