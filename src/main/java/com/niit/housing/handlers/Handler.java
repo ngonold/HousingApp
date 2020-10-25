@@ -11,10 +11,10 @@ import java.util.List;
 @ControllerAdvice
 @RestController
 public class Handler {
-    @ExceptionHandler(Throwable.class)
-    public String exceptionHandler() {
-        return "ops! exception happened!";
-    }
+//    @ExceptionHandler(Throwable.class)
+//    public String exceptionHandler() {
+//        return "ops! exception happened!";
+//    }
 
     //getting a list of non-valid arguments from controller
     @ExceptionHandler(MethodArgumentNotValidException.class)

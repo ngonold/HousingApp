@@ -3,6 +3,9 @@ package com.niit.housing.controller;
 import com.niit.housing.dto.UserDto;
 import com.niit.housing.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,10 +15,17 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UserController {
     private final UserService userService;
+    private final Validator userDtoValidator;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, @Qualifier("userDtoValidator") Validator validator) {
         this.userService = userService;
+        this.userDtoValidator = validator;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(userDtoValidator);
     }
 
     @GetMapping
