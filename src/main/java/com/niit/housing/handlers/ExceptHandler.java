@@ -10,7 +10,7 @@ import java.util.List;
 
 @ControllerAdvice
 @RestController
-public class Handler {
+public class ExceptHandler {
 //    @ExceptionHandler(Throwable.class)
 //    public String exceptionHandler() {
 //        return "ops! exception happened!";

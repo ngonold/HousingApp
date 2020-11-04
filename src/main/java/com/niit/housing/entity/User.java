@@ -1,14 +1,16 @@
 package com.niit.housing.entity;
 
+import com.niit.housing.enums.UserType;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
-@Data
+//Just to show how to hide SQL  keywords (user, order, etc...) within JPA
+@Table(name = "\"users\"")
+@Getter
+@Setter
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class User extends EntityBase {
@@ -23,4 +25,8 @@ public class User extends EntityBase {
 
     @Column (name = "email")
     private String email;
+
+    @Column(name = "user_type")
+    @Enumerated(value = EnumType.STRING)
+    private UserType userType;
 }

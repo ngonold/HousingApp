@@ -1,10 +1,9 @@
 package com.niit.housing.dto;
 
-import com.niit.housing.validators.Email;
+import com.niit.housing.enums.UserType;
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,6 +20,11 @@ public class UserDto {
     //    @NotNull
 //    @Email     //@Pattern(regexp = )
     private String email;
+
+    UserType userType;
+
+    private ApartmentDto apartments;
+
 }
 
 

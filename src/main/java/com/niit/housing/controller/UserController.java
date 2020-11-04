@@ -8,7 +8,6 @@ import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,9 +17,9 @@ public class UserController {
     private final Validator userDtoValidator;
 
     @Autowired
-    public UserController(UserService userService, @Qualifier("userDtoValidator") Validator validator) {
+    public UserController(UserService userService, @Qualifier("userDtoValidator") Validator userDtoValidator) {
         this.userService = userService;
-        this.userDtoValidator = validator;
+        this.userDtoValidator = userDtoValidator;
     }
 
     @InitBinder

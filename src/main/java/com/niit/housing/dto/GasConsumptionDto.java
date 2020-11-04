@@ -1,6 +1,6 @@
 package com.niit.housing.dto;
 
-public class ElectricityConsumptionDTO {
+public class GasConsumptionDto {
     private int totalConsumption;
     private int lastMonthConsumption;
 }

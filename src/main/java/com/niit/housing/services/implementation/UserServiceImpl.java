@@ -5,7 +5,6 @@ import com.niit.housing.entity.User;
 import com.niit.housing.repos.UserRepository;
 import com.niit.housing.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 

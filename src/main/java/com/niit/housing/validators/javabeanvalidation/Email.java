@@ -1,4 +1,4 @@
-package com.niit.housing.validators;
+package com.niit.housing.validators.javabeanvalidation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -7,6 +7,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+//JavaBean validation
 @Target(ElementType.FIELD)
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = EmailValidator.class)

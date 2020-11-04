@@ -18,15 +18,23 @@ public class UserDtoValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+        final String EMAIL_REGEX = "^[A-Z0-9.+/_-]+@*.*";
+        final String PHONE_REGEX = "[0-9]{10,11}";
         UserDto userDto = (UserDto) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "firstName.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "lastName.empty");
         //validate email here
-        final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9.+/_-]+@*.*", Pattern.CASE_INSENSITIVE);
+        final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
         Matcher emailMatcher = EMAIL_PATTERN.matcher(userDto.getEmail());
         if (!emailMatcher.find()) {
             errors.rejectValue("email","email.incorrect");
         }
-
+        if (!userDto.getPhoneNumber().equals("")) {
+            final Pattern PHONE_PATTERN = Pattern.compile(PHONE_REGEX);
+            Matcher phoneMatcher = PHONE_PATTERN.matcher(userDto.getPhoneNumber());
+            if (!phoneMatcher.matches()) {
+                errors.rejectValue("phoneNumber", "phoneNumber.incorrect");
+            }
+        }
     }
 }
