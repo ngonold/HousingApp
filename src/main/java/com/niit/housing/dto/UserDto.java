@@ -2,6 +2,7 @@ package com.niit.housing.dto;
 
 import com.niit.housing.enums.UserType;
 import lombok.*;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Validated
 public class UserDto {
 //    @NotBlank
     private String firstName;

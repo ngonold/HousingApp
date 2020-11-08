@@ -2,16 +2,14 @@ package com.niit.housing.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = "apartment")
 @ToString(callSuper = true)
 public class AptLocation extends EntityBase{
     @Column(name = "street")
@@ -22,4 +20,7 @@ public class AptLocation extends EntityBase{
     private int porchNumber;
     @Column(name = "floor")
     private int floorNumber;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aptLocation")
+    private Apartment apartment;
 }

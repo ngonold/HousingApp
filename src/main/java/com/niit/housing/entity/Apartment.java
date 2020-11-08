@@ -17,6 +17,6 @@ public class Apartment extends EntityBase {
     @Column(name = "account_number")
     private int accountNumber;
     //private SuppliesConsumption suppliesConsumption;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "apartment")
     private AptLocation aptLocation;
 }

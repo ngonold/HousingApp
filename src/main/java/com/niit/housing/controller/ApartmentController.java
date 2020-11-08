@@ -1,6 +1,7 @@
 package com.niit.housing.controller;
 
 import com.niit.housing.dto.ApartmentDto;
+import com.niit.housing.dto.AptLocationDto;
 import com.niit.housing.services.interfaces.ApartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,16 +26,29 @@ public class ApartmentController {
     public List<ApartmentDto> getAllApartments() {
         return apartmentService.getAllApartments();
     }
+
     @GetMapping(path = "id/{id}")
     public ApartmentDto getApartmentById(@PathVariable(value = "id") Long id) {
         return apartmentService.getApartmentById(id);
     }
+
     @PostMapping
     public ApartmentDto addApartment(@RequestBody ApartmentDto apartmentDto) {
         return apartmentService.addApartment(apartmentDto);
     }
+
     @PutMapping
     public ApartmentDto updateApartment(@RequestBody ApartmentDto apartmentDto) {
         return apartmentService.updateApartment(apartmentDto);
+    }
+
+    @PostMapping(value = "/location")
+    public AptLocationDto addAptLocation(AptLocationDto aptLocationDto) {
+        return null;
+    }
+
+    @PutMapping(value = "/location")
+    public AptLocationDto updateAptLocation(AptLocationDto aptLocationDto) {
+        return null;
     }
 }
