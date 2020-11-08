@@ -7,7 +7,7 @@ import java.util.List;
 public interface ApartmentService {
     ApartmentDto addApartment(ApartmentDto apartmentDto);
     ApartmentDto updateApartment(ApartmentDto apartmentDto);
-    ApartmentDto deleterApartment(ApartmentDto apartmentDto);
+    void deleteApartmentById(Long id);
     ApartmentDto getApartmentById(Long id);
     List<ApartmentDto> getAllApartments();
 }

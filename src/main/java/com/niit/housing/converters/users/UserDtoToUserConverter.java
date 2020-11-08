@@ -1,4 +1,4 @@
-package com.niit.housing.converters;
+package com.niit.housing.converters.users;
 
 import com.niit.housing.dto.UserDto;
 import com.niit.housing.entity.User;

@@ -1,4 +1,4 @@
-package com.niit.housing.converters;
+package com.niit.housing.converters.apartments;
 
 import com.niit.housing.dto.ApartmentDto;
 import com.niit.housing.dto.AptLocationDto;
@@ -25,7 +25,7 @@ public class ApartmentToApartmentDtoConverter implements Converter<Apartment, Ap
         return ApartmentDto.builder()
                 .accountNumber(apartment.getAccountNumber())
                 .telephoneNumber(apartment.getTelephoneNumber())
-                .aptLocation(conversionService.convert(aptLocation, AptLocationDto.class))
+                .aptLocationDto(conversionService.convert(aptLocation, AptLocationDto.class))
                 .build();
     }
 }

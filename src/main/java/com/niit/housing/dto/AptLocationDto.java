@@ -9,7 +9,8 @@ import lombok.Setter;
 @Builder
 public class AptLocationDto {
     private String street;
-    private int houseNumber;
-    private int porchNumber;
-    private int floorNumber;
+    private String houseNumber;
+    private String porchNumber;
+    private String floorNumber;
+    private String aptNumber;
 }

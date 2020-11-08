@@ -18,8 +18,10 @@ public class AptLocationDtoValidator implements Validator {
     public void validate(Object target, Errors errors) {
         AptLocationDto aptLocationDto = (AptLocationDto) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors,"street", "street.empty");
-        if (aptLocationDto.getHouseNumber() < 1) {
-            errors.rejectValue("houseNumber", "houseNumber.incorrect");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"houseNumber", "houseNumber.incorrect");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"aptNumber", "aptNumber.incorrect");
+//        if (aptLocationDto.getHouseNumber() < 1) {
+//            errors.rejectValue("houseNumber", "houseNumber.incorrect");
+//        }
     }
 }

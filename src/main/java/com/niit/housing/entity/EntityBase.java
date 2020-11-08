@@ -9,7 +9,7 @@ import javax.persistence.MappedSuperclass;
 
 @Data
 @MappedSuperclass
-abstract class EntityBase {
+public abstract class EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;

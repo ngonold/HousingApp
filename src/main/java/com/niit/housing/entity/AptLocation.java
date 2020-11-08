@@ -1,7 +1,5 @@
 package com.niit.housing.entity;
-
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
@@ -14,12 +12,19 @@ import javax.persistence.*;
 public class AptLocation extends EntityBase{
     @Column(name = "street")
     private String street;
+
     @Column(name = "house")
-    private int houseNumber;
+    private String houseNumber;
+
     @Column(name = "porch")
-    private int porchNumber;
+    private String porchNumber;
+
     @Column(name = "floor")
-    private int floorNumber;
+    private String floorNumber;
+
+    @Column(name = "number")
+    private String aptNumber;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "aptLocation")
     private Apartment apartment;

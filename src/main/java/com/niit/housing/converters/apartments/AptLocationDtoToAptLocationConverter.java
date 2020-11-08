@@ -1,4 +1,4 @@
-package com.niit.housing.converters;
+package com.niit.housing.converters.apartments;
 
 import com.niit.housing.dto.AptLocationDto;
 import com.niit.housing.entity.AptLocation;
@@ -13,7 +13,8 @@ public class AptLocationDtoToAptLocationConverter implements Converter<AptLocati
         AptLocation aptLocation = new AptLocation();
         aptLocation.setFloorNumber(aptLocationDto.getFloorNumber());
         aptLocation.setHouseNumber(aptLocationDto.getHouseNumber());
-        aptLocationDto.setPorchNumber(aptLocationDto.getPorchNumber());
+        aptLocation.setPorchNumber(aptLocationDto.getPorchNumber());
+        aptLocation.setAptNumber(aptLocationDto.getAptNumber());
         return aptLocation;
     }
 }

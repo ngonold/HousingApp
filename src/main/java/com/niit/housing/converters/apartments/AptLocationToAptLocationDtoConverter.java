@@ -1,4 +1,4 @@
-package com.niit.housing.converters;
+package com.niit.housing.converters.apartments;
 
 import com.niit.housing.dto.AptLocationDto;
 import com.niit.housing.entity.AptLocation;
@@ -15,6 +15,7 @@ public class AptLocationToAptLocationDtoConverter implements Converter<AptLocati
                 .floorNumber(aptLocation.getFloorNumber())
                 .houseNumber(aptLocation.getHouseNumber())
                 .porchNumber(aptLocation.getPorchNumber())
+                .aptNumber(aptLocation.getAptNumber())
                 .build();
     }
 }

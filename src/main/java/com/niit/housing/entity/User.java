@@ -4,9 +4,11 @@ import com.niit.housing.enums.UserType;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-//Just to show how to hide SQL  keywords (user, order, etc...) within JPA
+//Just to show how to hide SQL keywords (user, order, etc...) within JPA
 @Table(name = "\"users\"")
 @Getter
 @Setter
@@ -29,4 +31,7 @@ public class User extends EntityBase {
     @Column(name = "user_type")
     @Enumerated(value = EnumType.STRING)
     private UserType userType;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Apartment> apartments = new ArrayList<>();
 }

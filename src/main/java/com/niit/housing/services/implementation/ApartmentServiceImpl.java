@@ -42,12 +42,8 @@ public class ApartmentServiceImpl implements ApartmentService {
     }
 
     @Override
-    public ApartmentDto deleterApartment(ApartmentDto apartmentDto) {
-        Apartment apartment = conversionService.convert(apartmentDto, Apartment.class);
-        if (Objects.nonNull(apartment)) {
-            apartmentRepository.delete(apartment);
-        }
-        return conversionService.convert(apartment, ApartmentDto.class);
+    public void deleteApartmentById(Long id) {
+        apartmentRepository.deleteById(id);
     }
 
     @Override

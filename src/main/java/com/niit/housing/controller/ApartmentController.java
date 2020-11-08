@@ -42,6 +42,11 @@ public class ApartmentController {
         return apartmentService.updateApartment(apartmentDto);
     }
 
+    @DeleteMapping(path = "id/{id}")
+    public void deleteApartmentById(@PathVariable(value = "id") Long id) {
+        apartmentService.deleteApartmentById(id);
+    }
+
     @PostMapping(value = "/location")
     public AptLocationDto addAptLocation(AptLocationDto aptLocationDto) {
         return null;

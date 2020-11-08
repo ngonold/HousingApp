@@ -31,6 +31,6 @@ public class ApartmentDtoValidator implements Validator {
         }
 
         //invoke AptLocationValidator to check included info
-        ValidationUtils.invokeValidator(aptLocationDtoValidator, apartmentDto.getAptLocation(), errors);
+        ValidationUtils.invokeValidator(aptLocationDtoValidator, apartmentDto.getAptLocationDto(), errors);
     }
 }
