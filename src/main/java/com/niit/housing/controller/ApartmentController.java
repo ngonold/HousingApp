@@ -6,6 +6,7 @@ import com.niit.housing.services.interfaces.ApartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,13 +14,18 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/apartments")
 public class ApartmentController {
-    ApartmentService apartmentService;
-    Validator apartmentDtoValidator;
+    private final ApartmentService apartmentService;
+    private final Validator apartmentDtoValidator;
 
     @Autowired
-    public ApartmentController(ApartmentService apartmentService, @Qualifier("apartmentDtoValidator") Validator apartmentValidator) {
+    public ApartmentController(ApartmentService apartmentService, @Qualifier("apartmentDtoValidator") Validator apartmentDtoValidator) {
         this.apartmentService = apartmentService;
-        this.apartmentDtoValidator = apartmentValidator;
+        this.apartmentDtoValidator = apartmentDtoValidator;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(apartmentDtoValidator);
     }
 
     @GetMapping

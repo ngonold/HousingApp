@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -33,5 +35,5 @@ public class User extends EntityBase {
     private UserType userType;
 
     @OneToMany(mappedBy = "owner")
-    private List<Apartment> apartments = new ArrayList<>();
+    private Collection<Apartment> apartments = new HashSet<>();
 }

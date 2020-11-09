@@ -18,7 +18,7 @@ public class UserDtoValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        final String EMAIL_REGEX = "^[A-Z0-9.+/_-]+@*.*";
+        final String EMAIL_REGEX = "\\S+@\\S+.[A-Z]+";
         final String PHONE_REGEX = "[0-9]{10,11}";
         UserDto userDto = (UserDto) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "firstName.empty");

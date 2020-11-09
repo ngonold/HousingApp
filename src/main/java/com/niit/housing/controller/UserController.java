@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,11 +44,11 @@ public class UserController {
         return userService.getUser(id);
     }
     @PostMapping
-    public UserDto createUser(@RequestBody UserDto userDto) {
+    public UserDto createUser(@Valid @RequestBody UserDto userDto) {
         return userService.createUser(userDto);
     }
     @PutMapping
-    public UserDto updateUser(@RequestBody  UserDto userDto) {
+    public UserDto updateUser(@Valid @RequestBody  UserDto userDto) {
         return userService.updateUser(userDto);
     }
     @DeleteMapping
