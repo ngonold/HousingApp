@@ -3,6 +3,7 @@ package com.niit.housing.dto;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -12,8 +13,8 @@ import java.util.List;
 @Builder
 public class ApartmentDto {
     private String telephoneNumber;
-    private int accountNumber;
+    private Integer accountNumber;
     //consumptions list. all consumptions of different types are stored here
-    private List<ConsumableSupplyDto> consumableSuppliesDto;
+    private List<ConsumableSupplyDto> consumableSuppliesDto = new ArrayList<>();
     private AptLocationDto aptLocationDto;
 }

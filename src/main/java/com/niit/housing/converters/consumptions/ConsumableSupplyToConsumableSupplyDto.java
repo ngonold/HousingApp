@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConsumableSupplyToConsValueDto implements Converter<ConsumableSupply, ConsumableSupplyDto> {
+public class ConsumableSupplyToConsumableSupplyDto implements Converter<ConsumableSupply, ConsumableSupplyDto> {
 
     @Override
     public ConsumableSupplyDto convert(ConsumableSupply consumableSupply) {

@@ -16,6 +16,7 @@ public class AptLocationToAptLocationDtoConverter implements Converter<AptLocati
                 .houseNumber(aptLocation.getHouseNumber())
                 .porchNumber(aptLocation.getPorchNumber())
                 .aptNumber(aptLocation.getAptNumber())
+                .street(aptLocation.getStreet())
                 .build();
     }
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true, exclude = "apartment")
 @ToString(callSuper = true)
-public class AptLocation extends EntityBase{
+public class AptLocation extends EntityBase {
     @Column(name = "street")
     private String street;
 
@@ -25,7 +25,7 @@ public class AptLocation extends EntityBase{
     @Column(name = "number")
     private String aptNumber;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "aptLocation")
     private Apartment apartment;
 }

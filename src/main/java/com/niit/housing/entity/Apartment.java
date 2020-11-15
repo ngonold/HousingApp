@@ -16,13 +16,14 @@ import java.util.List;
 public class Apartment extends EntityBase {
     @Column(name = "telephone_number")
     private String telephoneNumber;
+
     @Column(name = "account_number")
-    private int accountNumber;
+    private Integer accountNumber;
 
     @OneToMany(mappedBy = "apartment")
     private List<ConsumableSupply> suppliesConsumption = new ArrayList<>();
 
-    @OneToOne(mappedBy = "apartment")
+    @OneToOne(mappedBy = "apartment", cascade = {CascadeType.ALL})
     private AptLocation aptLocation;
 
     @ManyToOne(fetch = FetchType.LAZY)
