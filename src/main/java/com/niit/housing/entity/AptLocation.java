@@ -25,7 +25,7 @@ public class AptLocation extends EntityBase {
     @Column(name = "number")
     private String aptNumber;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "aptLocation")
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "apartment_id")
     private Apartment apartment;
 }

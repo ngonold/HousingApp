@@ -17,4 +17,5 @@ public class ApartmentDto {
     //consumptions list. all consumptions of different types are stored here
     private List<ConsumableSupplyDto> consumableSuppliesDto = new ArrayList<>();
     private AptLocationDto aptLocationDto;
+    private Long ownerId;
 }

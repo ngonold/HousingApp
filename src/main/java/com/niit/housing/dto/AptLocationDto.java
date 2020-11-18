@@ -13,4 +13,5 @@ public class AptLocationDto {
     private String porchNumber;
     private String floorNumber;
     private String aptNumber;
+    private Long aptId;
 }

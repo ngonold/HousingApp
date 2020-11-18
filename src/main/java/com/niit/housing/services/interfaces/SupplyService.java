@@ -10,6 +10,7 @@ public interface SupplyService {
     ConsumableSupplyDto addConsumption(ConsumableSupplyDto consumableSupplyDto);
     void deleteConsumption(ConsumableSupplyDto consumableSupplyDto);
     ConsumableSupplyDto overwriteConsumption(ConsumableSupplyDto consumableSupplyDto);
-    public List<ConsumableSupplyDto> getAllConsumptionsByAptId(Long apartmentId) throws ApartmentNotFoundException;
+    public List<ConsumableSupplyDto> getConsumptionsByAptId(Long apartmentId) throws ApartmentNotFoundException;
+    public List<ConsumableSupplyDto> getAllConsumptions();
     public void deleteConsumptionByApartmentId(Long apartmentId) throws ApartmentNotFoundException;
 }

@@ -36,6 +36,7 @@ public class ApartmentToApartmentDtoConverter implements Converter<Apartment, Ap
                 .accountNumber(apartment.getAccountNumber())
                 .telephoneNumber(apartment.getTelephoneNumber())
                 .aptLocationDto(conversionService.convert(aptLocation, AptLocationDto.class))
+                .ownerId(apartment.getId())
                 .build();
     }
 }

@@ -32,6 +32,6 @@ public class ConsumableSupply extends EntityBase {
     @Column(name = "year")
     private Year year;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     Apartment apartment;
 }
