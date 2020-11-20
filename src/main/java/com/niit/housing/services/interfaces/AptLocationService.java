@@ -4,7 +4,7 @@ import com.niit.housing.dto.AptLocationDto;
 
 public interface AptLocationService {
     AptLocationDto addAptLocation(AptLocationDto aptLocationDto);
-    AptLocationDto getAptLocation();
+    AptLocationDto getAptLocationByAptId(Long aptId);
     AptLocationDto updateAptLocation(AptLocationDto aptLocationDto);
     void deleteAptLocationById(Long id);
 }
