@@ -4,10 +4,8 @@ import com.niit.housing.enums.UserType;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 
 @Entity
 //Just to show how to hide SQL keywords (user, order, etc...) within JPA
@@ -15,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"apartments"})
 @ToString(callSuper = true)
 public class User extends EntityBase {
     @Column(name = "first_name")

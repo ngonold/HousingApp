@@ -26,6 +26,6 @@ public class AptLocation extends EntityBase {
     private String aptNumber;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "apartment_id")
+    @JoinColumn(name = "apt_id")
     private Apartment apartment;
 }

@@ -4,15 +4,16 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
 @Table(name = "apartment")
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = "suppliesConsumption")
 @ToString(callSuper = true)
+@AttributeOverrides(@AttributeOverride(name = "id", column = @Column(name = "apt_id")))
 public class Apartment extends EntityBase {
     @Column(name = "telephone_number")
     private String telephoneNumber;
@@ -21,12 +22,13 @@ public class Apartment extends EntityBase {
     private Integer accountNumber;
 
     @OneToMany(mappedBy = "apartment")
-    private List<ConsumableSupply> suppliesConsumption = new ArrayList<>();
+    private Collection<ConsumableSupply> suppliesConsumption = new ArrayList<>();
 
     @OneToOne(mappedBy = "apartment", cascade = {CascadeType.ALL})
     private AptLocation aptLocation;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "owner_id")
     private User owner;
 }

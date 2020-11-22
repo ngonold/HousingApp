@@ -16,5 +16,5 @@ public class ConsumableSupplyDto {
     private ConsumableType consumableType;
     private Month month;
     private Year year;
-    private Long consumptionId;
+    private Long apartmentId;
 }

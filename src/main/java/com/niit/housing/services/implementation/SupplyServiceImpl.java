@@ -4,6 +4,7 @@ import com.google.common.collect.Iterables;
 import com.niit.housing.dto.ConsumableSupplyDto;
 import com.niit.housing.entity.Apartment;
 import com.niit.housing.entity.ConsumableSupply;
+import com.niit.housing.enums.ConsumableType;
 import com.niit.housing.exceptions.ApartmentNotFoundException;
 import com.niit.housing.repos.ApartmentRepository;
 import com.niit.housing.repos.SupplyRepository;
@@ -11,6 +12,7 @@ import com.niit.housing.services.interfaces.SupplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
+@Transactional
 public class SupplyServiceImpl implements SupplyService {
 
     private final SupplyRepository supplyRepository;
@@ -68,6 +71,15 @@ public class SupplyServiceImpl implements SupplyService {
                 .map(supply -> conversionService.convert(supply, ConsumableSupplyDto.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ConsumableSupplyDto> getConsumptionsByAptIdAndType(Long apartmentId, ConsumableType consumableType) throws ApartmentNotFoundException {
+        return supplyRepository.findConsumableSuppliesByApartmentIdAndAndConsumableType(apartmentId, consumableType)
+                .stream()
+                .map(supply->conversionService.convert(supply,ConsumableSupplyDto.class))
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public List<ConsumableSupplyDto> getAllConsumptions() {

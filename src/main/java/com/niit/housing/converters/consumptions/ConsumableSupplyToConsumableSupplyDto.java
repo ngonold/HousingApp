@@ -15,6 +15,7 @@ public class ConsumableSupplyToConsumableSupplyDto implements Converter<Consumab
                 .value(consumableSupply.getValue())
                 .year(consumableSupply.getYear())
                 .consumableType(consumableSupply.getConsumableType())
+                .apartmentId(consumableSupply.getApartment().getId())
                 .build();
     }
 

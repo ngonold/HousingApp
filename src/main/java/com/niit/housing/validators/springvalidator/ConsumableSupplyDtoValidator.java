@@ -20,12 +20,13 @@ public class ConsumableSupplyDtoValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         ConsumableSupplyDto consumableSupplyDto = (ConsumableSupplyDto) target;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "consumableType","consumableType.mustBeDefined");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "consumableType", "consumableType.mustBeDefined");
         if (consumableSupplyDto.getYear().getValue() < Year.now().getValue()) {
-            errors.rejectValue("year","year.incorrect");
+            errors.rejectValue("year", "year.incorrect");
         }
-        if (consumableSupplyDto.getMonth().getValue() < YearMonth.now().getMonth().getValue()) {
-            errors.rejectValue("month","month.incorrect");
+        if ((consumableSupplyDto.getMonth().getValue() < YearMonth.now().getMonth().getValue())
+                && (consumableSupplyDto.getMonth().getValue() > 11)) {
+            errors.rejectValue("month", "month.incorrect");
         }
         if (consumableSupplyDto.getValue() < 0) {
             errors.rejectValue("value", "value.incorrect");

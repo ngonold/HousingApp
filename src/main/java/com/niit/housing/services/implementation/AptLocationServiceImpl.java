@@ -1,7 +1,6 @@
 package com.niit.housing.services.implementation;
 
 import com.niit.housing.dto.AptLocationDto;
-import com.niit.housing.entity.Apartment;
 import com.niit.housing.entity.AptLocation;
 import com.niit.housing.exceptions.ApartmentNotFoundException;
 import com.niit.housing.exceptions.AptLocationNotFoundException;
@@ -11,13 +10,13 @@ import com.niit.housing.services.interfaces.AptLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
+@Transactional
 public class AptLocationServiceImpl implements AptLocationService {
 
     private final ConversionService conversionService;
