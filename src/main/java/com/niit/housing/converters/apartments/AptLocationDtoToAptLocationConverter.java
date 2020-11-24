@@ -18,7 +18,6 @@ public class AptLocationDtoToAptLocationConverter implements Converter<AptLocati
         this.apartmentRepository = apartmentRepository;
     }
 
-
     @Override
     public AptLocation convert(AptLocationDto aptLocationDto) {
         AptLocation aptLocation = new AptLocation();
@@ -28,7 +27,7 @@ public class AptLocationDtoToAptLocationConverter implements Converter<AptLocati
         aptLocation.setAptNumber(aptLocationDto.getAptNumber());
         aptLocation.setStreet(aptLocationDto.getStreet());
         aptLocation.setApartment(apartmentRepository.findById(aptLocationDto.getAptId())
-                .orElseThrow(()-> new ApartmentNotFoundException("Apt id = " + aptLocationDto.getAptId()+ " not found")));
+                .orElseThrow(() -> new ApartmentNotFoundException("Apt id = " + aptLocationDto.getAptId() + " not found")));
         return aptLocation;
     }
 }

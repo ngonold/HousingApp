@@ -1,7 +1,6 @@
 package com.niit.housing.controller;
 
 import com.niit.housing.dto.ConsumableSupplyDto;
-import com.niit.housing.entity.ConsumableSupply;
 import com.niit.housing.enums.ConsumableType;
 import com.niit.housing.services.interfaces.SupplyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.util.Collection;
 import java.util.List;
 
@@ -43,6 +41,11 @@ public class SuppliesController {
     public Collection<ConsumableSupplyDto> getAllConsumptionsByAptIdAndType(@PathVariable("id") Long id,
                                                                             @RequestParam("type") ConsumableType type) {
         return supplyService.getConsumptionsByAptIdAndType(id, type);
+    }
+
+    @GetMapping(path = "id/{id}")
+    public Collection<ConsumableSupplyDto> getAllConsumptionsByAptId(@PathVariable("id") Long id) {
+        return supplyService.getConsumptionsByAptId(id);
     }
 
     @PostMapping

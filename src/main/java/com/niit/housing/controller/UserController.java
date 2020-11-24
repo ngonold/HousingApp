@@ -30,34 +30,26 @@ public class UserController {
 
     @GetMapping
     public List<UserDto> getAllUsers() {
-        //return Arrays.asList(UserDto.builder().firstName("Nick").lastName("Gonold").build(), UserDto.builder().lastName("Gonold").firstName("Nadya").build());
         return userService.getAllUsers();
     }
-    //just a test how it works
-    @GetMapping(path = {"hello", "yay"})
-    public String helloWorld() {
-        return "Hello!";
-    }
+
     @GetMapping(path = "id/{id}")
     public UserDto getUserById(@PathVariable("id") Long id) {
-        //return UserDto.builder().firstName("John").lastName("Doe" + id).build();
         return userService.getUser(id);
     }
+
     @PostMapping
     public UserDto createUser(@Valid @RequestBody UserDto userDto) {
         return userService.createUser(userDto);
     }
+
     @PutMapping
-    public UserDto updateUser(@Valid @RequestBody  UserDto userDto) {
+    public UserDto updateUser(@Valid @RequestBody UserDto userDto) {
         return userService.updateUser(userDto);
     }
+
     @DeleteMapping
-    public void deleteUser (@RequestParam("id") Long id) {
-         userService.deleteUser(id);
+    public void deleteUser(@RequestParam("id") Long id) {
+        userService.deleteUser(id);
     }
-    //not working
-//    @ExceptionHandler(HttpClientErrorException.NotFound.class)
-//    public String onException() {
-//        return "Oops!";
-//    }
 }

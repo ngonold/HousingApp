@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface SupplyRepository extends CrudRepository<ConsumableSupply, Long> {
-    List<ConsumableSupply> findConsumableSuppliesByApartmentIdAndAndConsumableType(Long apatmentId, ConsumableType consumableType);
+    List<ConsumableSupply> findConsumableSuppliesByApartmentIdAndAndConsumableType(Long apartmentId,
+                                                                                   ConsumableType consumableType);
+    List<ConsumableSupply> findConsumableSuppliesByApartmentId(Long apartmentId);
 }

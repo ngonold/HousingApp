@@ -11,6 +11,7 @@ import java.util.List;
 @ControllerAdvice
 @RestController
 public class ExceptHandler {
+
     //getting a list of non-valid arguments from controller
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<FieldError> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException exception) {

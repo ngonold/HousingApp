@@ -34,6 +34,7 @@ public class SupplyServiceImpl implements SupplyService {
         this.conversionService = conversionService;
         this.apartmentRepository = apartmentRepository;
     }
+
     @Override
     public ConsumableSupplyDto addConsumption(ConsumableSupplyDto consumableSupplyDto) {
         ConsumableSupply consumableSupply = conversionService.convert(consumableSupplyDto, ConsumableSupply.class);
@@ -76,20 +77,17 @@ public class SupplyServiceImpl implements SupplyService {
     public List<ConsumableSupplyDto> getConsumptionsByAptIdAndType(Long apartmentId, ConsumableType consumableType) throws ApartmentNotFoundException {
         return supplyRepository.findConsumableSuppliesByApartmentIdAndAndConsumableType(apartmentId, consumableType)
                 .stream()
-                .map(supply->conversionService.convert(supply,ConsumableSupplyDto.class))
+                .map(supply -> conversionService.convert(supply, ConsumableSupplyDto.class))
                 .collect(Collectors.toList());
     }
 
-
     @Override
     public List<ConsumableSupplyDto> getAllConsumptions() {
-        return StreamSupport.stream(supplyRepository.findAll().spliterator(),false)
+        return StreamSupport.stream(supplyRepository.findAll().spliterator(), false)
                 .map((consumableSupply) -> conversionService.convert(consumableSupply, ConsumableSupplyDto.class))
-                .collect(Collectors.toList()) ;
+                .collect(Collectors.toList());
     }
 
-    //If this stuff should be in ApartmentService or here?
-    //nope, but this should be retrieved from supply repo
     @Override
     public void deleteConsumptionByApartmentId(Long apartmentId) throws ApartmentNotFoundException {
         Apartment apartment = apartmentRepository.findById(apartmentId)

@@ -16,7 +16,6 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    //    @Email     //@Pattern(regexp = )
     private String email;
     private UserType userType = UserType.OWNER;
     private Collection<ApartmentDto> apartments = new HashSet<>();

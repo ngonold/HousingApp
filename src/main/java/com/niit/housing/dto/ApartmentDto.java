@@ -1,6 +1,5 @@
 package com.niit.housing.dto;
 
-
 import lombok.*;
 
 import java.util.ArrayList;

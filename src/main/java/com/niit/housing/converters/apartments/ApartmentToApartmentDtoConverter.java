@@ -5,7 +5,6 @@ import com.niit.housing.dto.AptLocationDto;
 import com.niit.housing.dto.ConsumableSupplyDto;
 import com.niit.housing.entity.Apartment;
 import com.niit.housing.entity.AptLocation;
-import com.niit.housing.entity.ConsumableSupply;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
@@ -29,7 +28,7 @@ public class ApartmentToApartmentDtoConverter implements Converter<Apartment, Ap
         AptLocation aptLocation = apartment.getAptLocation();
         List<ConsumableSupplyDto> consumableSupplyDtoList = apartment.getSuppliesConsumption()
                 .stream()
-                .map(consumableSupply -> conversionService.convert(consumableSupply,ConsumableSupplyDto.class))
+                .map(consumableSupply -> conversionService.convert(consumableSupply, ConsumableSupplyDto.class))
                 .collect(Collectors.toList());
 
         return ApartmentDto.builder()

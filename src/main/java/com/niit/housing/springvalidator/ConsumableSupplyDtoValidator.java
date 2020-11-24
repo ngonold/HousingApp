@@ -1,4 +1,4 @@
-package com.niit.housing.validators.springvalidator;
+package com.niit.housing.springvalidator;
 
 import com.niit.housing.dto.ConsumableSupplyDto;
 import org.springframework.stereotype.Component;

@@ -9,8 +9,9 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Transactional
@@ -36,7 +37,6 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(userId);
     }
 
-    //why? 2 conversions here!
     @Override
     public UserDto updateUser(UserDto userDto) {
         User user = conversionService.convert(userDto, User.class);
@@ -52,14 +52,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getAllUsers() {
-        //??
-        List<User> userList = new ArrayList<>();
-        userRepository.findAll().forEach(userList::add);
-        //return userList.forEach(x->conversionService.convert(x,UserDto.class));
-        List<UserDto> userDtoList = new ArrayList<>();
-        for(User user : userList) {
-            userDtoList.add(conversionService.convert(user, UserDto.class));
-        }
-        return userDtoList;
+        return StreamSupport.stream(userRepository.findAll().spliterator(), false)
+                .map(user -> conversionService.convert(user, UserDto.class))
+                .collect(Collectors.toList());
     }
 }

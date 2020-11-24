@@ -69,6 +69,6 @@ public class AptLocationServiceImpl implements AptLocationService {
 
     @Override
     public void deleteAptLocationById(Long id) {
-
+        aptLocationRepository.deleteById(id);
     }
 }

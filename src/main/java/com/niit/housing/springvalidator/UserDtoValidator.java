@@ -1,4 +1,4 @@
-package com.niit.housing.validators.springvalidator;
+package com.niit.housing.springvalidator;
 
 import com.niit.housing.dto.UserDto;
 import org.springframework.stereotype.Component;
@@ -27,7 +27,7 @@ public class UserDtoValidator implements Validator {
         final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
         Matcher emailMatcher = EMAIL_PATTERN.matcher(userDto.getEmail());
         if (!emailMatcher.find()) {
-            errors.rejectValue("email","email.incorrect");
+            errors.rejectValue("email", "email.incorrect");
         }
         if (!userDto.getPhoneNumber().equals("")) {
             final Pattern PHONE_PATTERN = Pattern.compile(PHONE_REGEX);

@@ -1,5 +1,7 @@
 package com.niit.housing.entity;
+
 import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
