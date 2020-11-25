@@ -40,11 +40,6 @@ public class AptLocationController {
         return locationService.addAptLocation(aptLocationDto);
     }
 
-    @PutMapping
-    public AptLocationDto updateAptLocation(@Valid @RequestBody AptLocationDto aptLocationDto) {
-        return locationService.updateAptLocation(aptLocationDto);
-    }
-
     @DeleteMapping(path = "id/{id}")
     public void deleteAptLocationById(@PathVariable("id") Long id) {
         locationService.deleteAptLocationById(id);

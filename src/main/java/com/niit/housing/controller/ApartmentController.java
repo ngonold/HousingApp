@@ -38,14 +38,14 @@ public class ApartmentController {
         return apartmentService.getApartmentById(id);
     }
 
-    @PostMapping
-    public ApartmentDto addApartment(@Valid @RequestBody ApartmentDto apartmentDto) {
+    @PostMapping(path = "id/{id}")
+    public ApartmentDto addApartment(@PathVariable("id") Long id, @Valid @RequestBody ApartmentDto apartmentDto) {
         return apartmentService.addApartment(apartmentDto);
     }
 
-    @PutMapping
-    public ApartmentDto updateApartment(@Valid @RequestBody ApartmentDto apartmentDto) {
-        return apartmentService.updateApartment(apartmentDto);
+    @PutMapping(path = "id/{id}")
+    public ApartmentDto updateApartment(@PathVariable("id") Long id, @Valid @RequestBody ApartmentDto apartmentDto) {
+        return apartmentService.updateApartment(id, apartmentDto);
     }
 
     @DeleteMapping(path = "id/{id}")

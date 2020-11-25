@@ -38,10 +38,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(UserDto userDto) {
-        User user = conversionService.convert(userDto, User.class);
-        userRepository.save(user);
-        return conversionService.convert(user, UserDto.class);
+    public UserDto updateUser(Long userId, UserDto userDto) {
+        User userUpdate = conversionService.convert(userDto, User.class);
+        if(userRepository.findById(userId).isPresent()) {
+            User userStored = userRepository.findById(userId).get();
+            //not sure if this should be done some other way?
+            userStored.setEmail(userUpdate.getEmail());
+            userStored.setFirstName(userUpdate.getFirstName());
+            userStored.setLastName(userUpdate.getLastName());
+            userStored.setUserType(userUpdate.getUserType());
+            userRepository.save(userStored);
+            return conversionService.convert(userStored, UserDto.class);
+        } else {
+            userRepository.save(userUpdate);
+            return conversionService.convert(userUpdate, UserDto.class);
+        }
     }
 
     @Override

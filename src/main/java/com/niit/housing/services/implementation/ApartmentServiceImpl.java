@@ -37,12 +37,19 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     //this method is not working properly
     @Override
-    public ApartmentDto updateApartment(ApartmentDto apartmentDto) {
-        Apartment apartment = conversionService.convert(apartmentDto, Apartment.class);
-        if (Objects.nonNull(apartment)) {
-            apartmentRepository.save(apartment);
+    public ApartmentDto updateApartment(Long id, ApartmentDto apartmentDto) {
+        Apartment apartmentUpdate = conversionService.convert(apartmentDto, Apartment.class);
+        if (apartmentRepository.findById(id).isPresent()) {
+            Apartment apartmentStored = apartmentRepository.findById(id).get();
+            apartmentStored.setOwner(apartmentUpdate.getOwner());
+            apartmentStored.setTelephoneNumber(apartmentUpdate.getTelephoneNumber());
+            apartmentStored.setAccountNumber(apartmentUpdate.getAccountNumber());
+            apartmentRepository.save(apartmentStored);
+            return conversionService.convert(apartmentStored, ApartmentDto.class);
+        } else {
+            apartmentRepository.save(apartmentUpdate);
+            return conversionService.convert(apartmentUpdate, ApartmentDto.class);
         }
-        return conversionService.convert(apartment, ApartmentDto.class);
     }
 
     @Override

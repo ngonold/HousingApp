@@ -48,23 +48,9 @@ public class AptLocationServiceImpl implements AptLocationService {
                     .map(address -> conversionService.convert(address, AptLocationDto.class))
                     .findFirst()
                     .orElseThrow(() -> new AptLocationNotFoundException("No sucaddress location"));
-        }
-        else {
+        } else {
             throw new ApartmentNotFoundException("Apartment id = " + aptId + " doesnt'exist");
         }
-    }
-
-    //?that probably creates another copy of new apt location... need to correct
-    @Override
-    public AptLocationDto updateAptLocation(AptLocationDto aptLocationDto) {
-        if (aptLocationRepository.existsById(aptLocationDto.getAptId())) {
-            AptLocation aptLocation = conversionService.convert(aptLocationDto, AptLocation.class);
-            if (Objects.nonNull(aptLocation)) {
-                aptLocationRepository.save(aptLocation);
-            }
-            return conversionService.convert(aptLocation, AptLocationDto.class);
-        }
-        throw new AptLocationNotFoundException("Location doesn't exist");
     }
 
     @Override
