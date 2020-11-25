@@ -38,8 +38,8 @@ public class ApartmentController {
         return apartmentService.getApartmentById(id);
     }
 
-    @PostMapping(path = "id/{id}")
-    public ApartmentDto addApartment(@PathVariable("id") Long id, @Valid @RequestBody ApartmentDto apartmentDto) {
+    @PostMapping
+    public ApartmentDto addApartment(@Valid @RequestBody ApartmentDto apartmentDto) {
         return apartmentService.addApartment(apartmentDto);
     }
 

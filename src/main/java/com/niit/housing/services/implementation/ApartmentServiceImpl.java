@@ -5,8 +5,10 @@ import com.niit.housing.entity.Apartment;
 import com.niit.housing.repos.ApartmentRepository;
 import com.niit.housing.services.interfaces.ApartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,18 +17,19 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-@Transactional
+@Transactional(propagation = Propagation.NEVER)
 public class ApartmentServiceImpl implements ApartmentService {
     private final ApartmentRepository apartmentRepository;
     private final ConversionService conversionService;
 
     @Autowired
-    public ApartmentServiceImpl(ApartmentRepository apartmentRepository, ConversionService conversionService) {
+    public ApartmentServiceImpl(ApartmentRepository apartmentRepository, @Qualifier("conversionService") ConversionService conversionService) {
         this.apartmentRepository = apartmentRepository;
         this.conversionService = conversionService;
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ApartmentDto addApartment(ApartmentDto apartmentDto) {
         Apartment apartment = conversionService.convert(apartmentDto, Apartment.class);
         if (Objects.nonNull(apartment)) {
